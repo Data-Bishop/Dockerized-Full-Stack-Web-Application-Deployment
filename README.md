@@ -1,6 +1,9 @@
 # Full-Stack FastAPI and React Application Deployment
 
-Welcome to the Full-Stack FastAPI and React template repository. This repository serves as a demo application for showcasing how to set up and run a full-stack application with a FastAPI backend and a ReactJS frontend using ChakraUI, and dockerize said appilcation to be deployed locally and also to a cloud instance.
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)
+
+Welcome to the Full-Stack FastAPI and React template repository. This repository serves as a demo application for showcasing how to set up and run a full-stack application with a FastAPI backend and a ReactJS frontend using ChakraUI, and dockerize said application to be deployed locally and to a cloud instance.
 
 ## Project Structure
 
@@ -18,9 +21,9 @@ To get started with this template, please follow the instructions in the respect
 - [Frontend README](./frontend/README.md)
 - [Backend README](./backend/README.md)
 
-## Implementation of the Dockerized Full Stack Web Application Deployment
+## Dockerizing the Full Stack Application Locally
 
-After completing the steps above, the following steps are taken to dockerize the application:
+After completing the getting started step above, the following steps are taken to dockerize the application:
 
 
 ### Step 1: Build the Frontend Image in the `frontend` Directory
@@ -73,14 +76,14 @@ _This is the configuration of the [docker-compose.yaml](./docker-compose.yaml) f
 
 ### Step 4: Verifying the Application
 
-After a successful run, go to your web browser and paste the following urls:
+After a successful run, go to your web browser and access the following urls:
 
-```sh
+```
 http://localhost
 ```
 You should see a login page, where you can login using the superuser details in the .env file in the backend folder. If you can successfully login, then the frontend and backend container services are successfully communicating with each other.
 
-```sh
+```
 http://localhost/api
 ```
 This should show you the backend api service.
@@ -103,18 +106,18 @@ You should see a login page for adminer, you are to use the necessary database d
 ```sh
 http://proxy.localhost
 ```
-You should see the traefik dashboard that managies the proxies for the domains.
+You should see the traefik dashboard that manages the proxies for the domains.
 
 _**Note**: The login details can be found in the `.env` file in the `backend` directory._
 
-## Deploying & Hosting The Application on EC2
+## Deploying & Hosting The Dockerized Application on AWS EC2
 
 ### Prerequisite
 - a domain name (i.e. used for DNS configuration)
 
-The Dockerized application needs to be deployed on an AWS `EC2 Instance`. On AWS, `Route53` will be leveraged for DNS Routing. The steps taken to achieve this are stated below:
+On AWS, `Route53` will be leveraged for DNS Routing. The steps taken to achieve this are stated below:
 
-### Step 1: Install Docker on the EC2 Instance and clone the [repository](https://github.com/ekedonald/Stage-2-Dockerized-Full-Stack-Application.git)
+### Step 1: Install Docker on the EC2 Instance and clone the [repository](https://github.com/Data-Bishop/Dockerized-Full-Stack-Web-Application-Deployment.git)
 
 - Spin up an EC2 Instance and run the commands to install `docker` and `docker-compose`.
 
@@ -172,11 +175,11 @@ git clone <dockerized-full-stack-application-url>
     3. db.yourdomain.com
     4. proxy.yourdomain.com
 
-_**Note**: After creation, there will be a prompt that allows you view status of the records to verify if they have been synchronized_.
+_**Note**: After creation, a prompt will allow you to view the records' status to verify if they have been synchronized_.
 
 - DNS changes can take some time to propagate. [WhatsMyDNS](https://www.whatsmydns.net/) validates if the DNS records have propagated globally, use it to test the 4 domains.
 
-### Step 4: Redeploy the Application
+### Step 4: Deploy the Application
 
 - SSH into the EC2 Instance and cd into the directory of the repo you clone.
 
@@ -187,3 +190,5 @@ docker-compose up -d
 ```
 
 - The application should be running and can be assessed by anyone connected to the internet once they have your domain name.
+
+Feel free to reach out if you encounter any issues.
